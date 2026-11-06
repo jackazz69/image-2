@@ -1,6 +1,5 @@
 package io.spring.image.demo.domain;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
