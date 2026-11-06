@@ -1,6 +1,9 @@
 import { Image } from "./image";
 
 export class ImageService {
+  excluir(url: string) {
+    throw new Error("Method not implemented.");
+  }
   
 async enviar(file: File, name: string, tags: string[]): Promise<void> {
   const formData = new FormData();

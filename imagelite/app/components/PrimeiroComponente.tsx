@@ -1,29 +1,28 @@
 'use client';
+import Link from 'next/link';
 
-interface PrimeiroComponenteProps {
-    mensagem?: string;
-    mensagemBotao?: string
+interface PrimeiroComponente {
+  mensagem: string;
+  mensagemBotao?: string;
 }
 
-export const PrimeiroComponente = ({ mensagem, mensagemBotao }: PrimeiroComponenteProps) => {
-    const clique = () => {
-        console.log("você DESTRUIU uma vila pacifica...");
-        alert(mensagemBotao);
-    }
+export const PrimeiroComponente = ({ mensagem, mensagemBotao }: PrimeiroComponente) => {
+  const clique = () => {
+    console.log('Você clicou no botão!');
+    alert(mensagemBotao);
+  };
 
-    return (
-        <div className="flex flex-col items-center justify-center gap-6 text-center w-full px-4 py-8">
-            {/* Corrigido de text-white-500 para text-sky-950 para ficar visível */}
-            <h1 className="text-2xl font-bold text-sky-950 animate-pulse">clica ali não</h1>
+  return (
+    <div>
+      <h1></h1>
+      <p>{mensagem}</p>
+      <button onClick={clique}></button>
 
-            {mensagem && <p className="text-zinc-600 dark:text-zinc-300 font-medium">{mensagem}</p>}
-
-            <button
-                onClick={clique}
-                className="px-6 py-3 bg-red-900 hover:bg-red-500 text-white font-semibold rounded-lg shadow-md transition-all active:scale-90 duration-300"
-            >
-                Clique aqui vai
-            </button>
-        </div>
-    );
-}
+      <Link href="/galeria">
+  <button className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+    Ir para a Galeria
+  </button>
+</Link>
+    </div>
+  );
+};

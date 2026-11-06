@@ -8,6 +8,7 @@ import { Image } from '@/resource/image';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components';
+import Link from "next/link"
 
 
 
@@ -24,6 +25,8 @@ export default function Galeria() {
     const result = await useService.buscar(query, extension);
     setImages(result);
     console.log(query, extension)
+
+    
   }
 
   function renderImageCard(image: Image) {
@@ -75,8 +78,8 @@ export default function Galeria() {
     </Template>
 
   )
+  
 }
-
 
 
 
