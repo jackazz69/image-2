@@ -1,4 +1,4 @@
-package io.spring.image.demo.application;
+package io.spring.image.demo.application.Image;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;

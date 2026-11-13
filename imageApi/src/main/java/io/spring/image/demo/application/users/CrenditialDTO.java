@@ -1,3 +1,5 @@
+package io.spring.image.demo.application.users;
+
 import lombok.Data;
 
 @Data

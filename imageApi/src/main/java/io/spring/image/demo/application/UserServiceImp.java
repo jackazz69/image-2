@@ -15,12 +15,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-@RequiredArgsConstructor
 public class UserServiceImp implements UserService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder; //inserir no pacote config
+    private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+
+    public UserServiceImp(UserRepository userRepository, PasswordEncoder passwordEncoder, JwtService jwtService) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+        this.jwtService = jwtService;
+    }
 
     @Override
     public User getByEmail(String email) {
@@ -30,7 +35,7 @@ public class UserServiceImp implements UserService {
     @Override
     @Transactional
     public User save(User user) {
-        var possibleUser = getByEmail(user.getEmail());
+        User possibleUser = getByEmail(user.getEmail());
         if(possibleUser != null ){
             throw new DuplicatedTupleException("User already exists!");
         } // alteração na senha...
@@ -40,7 +45,7 @@ public class UserServiceImp implements UserService {
     //+++++++Até aqui+++++
     @Override
     public AccessToken autenticate(String email, String password) {
-        var user = getByEmail(email);
+        User user = getByEmail(email);
         if(user == null){
             return null;
         }
